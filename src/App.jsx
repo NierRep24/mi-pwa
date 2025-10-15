@@ -20,14 +20,20 @@ export default function App() {
     }
   }, []);
 
-  const mostrarNotificacion = (mensaje) => {
-    if ("Notification" in window && Notification.permission === "granted") {
-      new Notification("Nueva tarea 📚", {
-        body: mensaje,
-        icon: "/vite.svg",
-      });
+  const mostrarNotificacion = async (mensaje) => {
+    if ("serviceWorker" in navigator && Notification.permission === "granted") {
+      const registration = await navigator.serviceWorker.getRegistration();
+      if (registration) {
+        registration.showNotification("Nueva tarea agregada 📝", {
+          body: mensaje,
+          icon: "/vite.svg",
+          vibrate: [100, 50, 100],
+          badge: "/vite.svg",
+        });
+      }
     }
   };
+
 
   const agregarTarea = () => {
     if (nueva.trim() === "") return;
