@@ -24,9 +24,9 @@ export default function App() {
     if ("serviceWorker" in navigator && Notification.permission === "granted") {
       const registration = await navigator.serviceWorker.getRegistration();
       if (registration) {
-        registration.showNotification("Nueva tarea agregada 📝", {
+        registration.showNotification("Nueva tarea agregada ", {
           body: mensaje,
-          icon: "/vite.svg",
+          icon: "src/assets/img/josi_dano_sicma.png",
           vibrate: [100, 50, 100],
           badge: "/vite.svg",
         });
@@ -61,7 +61,7 @@ export default function App() {
             type="text"
             value={nueva}
             onChange={(e) => setNueva(e.target.value)}
-            placeholder="✏️ Escribe una nueva tarea..."
+            placeholder=" Escribe una nueva tarea..."
             className="px-4 py-2 rounded-xl w-full text-gray-700 focus:outline-none focus:ring-2 focus:ring-sky-400 border border-sky-200"
           />
           <button
@@ -75,7 +75,7 @@ export default function App() {
         <ul className="space-y-3 max-h-80 overflow-y-auto scrollbar-thin scrollbar-thumb-sky-300 scrollbar-track-sky-100">
           {tareas.length === 0 && (
             <p className="text-gray-500 text-center italic">
-              🌤️ No hay tareas aún. ¡Agrega una para empezar!
+               No hay tareas aún. ¡Agrega una para empezar!
             </p>
           )}
           {tareas.map((tarea, i) => (
@@ -95,7 +95,7 @@ export default function App() {
         </ul>
 
         <p className="text-sm text-gray-500 text-center mt-6">
-          💡 Consejo: organiza tus tareas diarias para mantenerte al día ✨
+           Consejo: organiza tus tareas diarias para mantenerte al día 
         </p>
       </div>
     </main>
